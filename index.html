@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Resume Maker</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>AI Resume Maker</h1>
+        <p>Generate a professional resume in seconds with AI. Edit inline and download as PDF.</p>
+      </header>
+
+      <main class="main-content">
+        <!-- Configuration and Input Panel -->
+        <section class="panel input-panel">
+          <div class="glass-card">
+            <h2>Configuration</h2>
+            <div class="form-group">
+              <label for="api-key">Gemini API Key</label>
+              <input type="password" id="api-key" placeholder="Enter your Gemini API key" />
+              <small class="help-text">Your key is only used locally and not stored on our servers.</small>
+            </div>
+            
+            <div class="form-group">
+              <label for="prompt">Your Background & Desired Role</label>
+              <textarea id="prompt" rows="6" placeholder="Example: I am a software engineer with 3 years of experience in React and Node.js. I previously worked at Google. Generate a resume for a Senior Frontend Developer position."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="template-select">Resume Template</label>
+              <select id="template-select" class="template-dropdown">
+                <option value="template-classic">Classic (Traditional & Professional)</option>
+                <option value="template-modern">Modern (Sleek & Tech-focused)</option>
+                <option value="template-minimalist">Minimalist (Clean & Elegant)</option>
+                <option value="template-faangpath" selected>FAANGPath (ATS Optimized & Overleaf Style)</option>
+              </select>
+            </div>
+            
+            <button id="generate-btn" class="primary-btn">
+              <span class="btn-text">Generate Resume</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div id="error-message" class="error-message hidden"></div>
+          </div>
+        </section>
+
+        <!-- Preview and Output Panel -->
+        <section class="panel preview-panel">
+          <div class="preview-header">
+            <h2>Resume Preview</h2>
+            <button id="download-btn" class="secondary-btn" disabled>Download PDF</button>
+          </div>
+          
+          <div class="preview-container-wrapper">
+            <div id="resume-preview" class="resume-preview template-faangpath placeholder" contenteditable="false">
+              <p class="placeholder-text">Your generated resume will appear here. You can click to edit the text before downloading.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
