@@ -1,7 +1,6 @@
 import html2pdf from 'html2pdf.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const apiKeyInput = document.getElementById('api-key');
   const promptInput = document.getElementById('prompt');
   const templateSelect = document.getElementById('template-select');
   const generateBtn = document.getElementById('generate-btn');
@@ -11,12 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnText = generateBtn.querySelector('.btn-text');
   const loader = generateBtn.querySelector('.loader');
 
-  // Load saved API key
-  const savedKey = localStorage.getItem('gemini_api_key');
-  if (savedKey) {
-    apiKeyInput.value = savedKey;
-  }
-
   // Template Switching Logic
   templateSelect.addEventListener('change', (e) => {
     resumePreview.classList.remove('template-classic', 'template-modern', 'template-minimalist', 'template-faangpath');
@@ -24,21 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   generateBtn.addEventListener('click', async () => {
-    const apiKey = apiKeyInput.value.trim();
+    const apiKey = 'AQ.Ab8RN6KLERCFJL37pQHqeuTcYLqVSCofs5tiKQAXH-rk3smOKg';
     const prompt = promptInput.value.trim();
-
-    if (!apiKey) {
-      showError('Please enter your Gemini API Key.');
-      return;
-    }
 
     if (!prompt) {
       showError('Please enter a prompt for your resume.');
       return;
     }
-
-    // Save API key
-    localStorage.setItem('gemini_api_key', apiKey);
     
     // Reset UI
     hideError();
